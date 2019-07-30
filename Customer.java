@@ -1,11 +1,11 @@
 package basicjavaprogram;
 
 public class Customer {
-	int accountNum;
-	double balance;
-	String custName;
-	String email;
-	String phone;
+	private int accountNum;
+	private double balance;
+	private String custName;
+	private String email;
+	private String phone;
 	
 	public Customer() {
 		this.accountNum = 123456789;
@@ -43,7 +43,7 @@ public class Customer {
 		return phone;
 	}
 	
-	public void deposit(double amt) {
+	protected void deposit(double amt) {
 		this.balance += amt;
 		System.out.print("You made "); 
 		System.out.printf("%.2f", amt);
@@ -52,7 +52,7 @@ public class Customer {
 		System.out.println("");
 	}
 	
-	public void withdrawal(double amt) {
+	protected void withdrawal(double amt) {
 		if(this.balance >= amt)
 		{
 			this.balance -= amt;
@@ -67,8 +67,8 @@ public class Customer {
 		System.out.println("");
 	}
 	
-	public void print() {
-		System.out.println(accountNum + " " + accountNum + " " + balance + " " + email + " " + phone);
+	protected void print() {
+		System.out.println(accountNum + " " + custName + " " + balance + " " + email + " " + phone + "\n");
 	}
 	
 	

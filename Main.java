@@ -7,6 +7,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Customer a = new Customer (1231231, 1000, "Johny Sin" , "john@gmail.com", "(831)231-5461");
+		Customer b = new Customer();
+		b.print();
 		
 		Boolean flag = true;
 		
