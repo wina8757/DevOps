@@ -6,13 +6,14 @@ public class Customer {
 	private String custName;
 	private String email;
 	private String phone;
+	private double dailyLimit;
 	
 	public Customer() {
 		this.accountNum = 123456789;
-		this.balance = 50.00;
-		this.custName = "Jessen";
-		this.email = "jewinardinata@csumb.edu";
-		this.phone = "(323)317-0029";
+		this.balance = 800.00;
+		this.custName = "John Hopkins";
+		this.email = "johnhopkins@gmail.com";
+		this.phone = "(323)387-0859";
 	}
 	
 	public Customer(int accountNum, double balance, String custName, String email, String phone) {
@@ -45,30 +46,40 @@ public class Customer {
 	
 	protected void deposit(double amt) {
 		this.balance += amt;
-		System.out.print("You made "); 
+		System.out.print("\n$"); 
 		System.out.printf("%.2f", amt);
-		System.out.print(" $ deposit into your account and your account balance is $");
+		System.out.print(" deposit into your account and your account balance is $");
 		System.out.printf("%.2f", balance);
 		System.out.println("");
 	}
 	
 	protected void withdrawal(double amt) {
-		if(this.balance >= amt)
-		{
+		if(amt > balance){
+			System.out.println("\nYou have insufficient funds in your account. Please try again!");
+		}
+		else if(dailyLimit >= 100) {
+			System.out.println("\nYou have reached your daily withdrawal limit which is $100.00");
+		}
+		else if(amt > 1000) {
+			System.out.println("\nYou only can withdraw money and or under $1000 per transaction. Please try again!");
+		}
+		else{
 			this.balance -= amt;
+			this.dailyLimit += amt;
+			
+			System.out.print("\n$");
+			System.out.printf("%.2f", amt);
+			System.out.print(" withdrawn from your account and your account balance is $");
+			System.out.printf("%.2f", balance);
+			System.out.println("");
 		}
-		else {
-			System.out.println("You have insufficient funds in your account. Please try again!");
-		}
-		System.out.print(custName +" withdraw ");
-		System.out.printf("%.2f", amt);
-		System.out.print(" $ from your account and your account balance is $");
-		System.out.printf("%.2f", balance);
-		System.out.println("");
 	}
 	
 	protected void print() {
-		System.out.println(accountNum + " " + custName + " " + balance + " " + email + " " + phone + "\n");
+		System.out.println("Customer Name: " + custName + "\nAccount Number: " + accountNum);
+		System.out.print("Account Balance: $");
+		System.out.printf("%.2f", balance);
+		System.out.println("\nCustomer's Email: " + email + "\nCustomer's Phone Number: " + phone + "\n");
 	}
 	
 	
